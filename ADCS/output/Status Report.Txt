@@ -1,0 +1,12 @@
+Output: PT-MIS-PCB-001_v1 NC Drill Files
+Type  : NC Drill
+From  : PCB Document [PT-MIS-PCB-001_v1.PcbDoc]
+   Generated File[PT-MIS-PCB-001_v1.TXT]
+   Generated File[PT-MIS-PCB-001_v1.LDP]
+   Generated File[PT-MIS-PCB-001_v1.DRR]
+
+
+Files Generated   : 3
+Documents Printed : 0
+
+Finished Output Generation At 11:39:18 a. m. On 19/07/2019
