@@ -1,0 +1,21 @@
+Output: Gerber Files
+Type  : Gerber
+From  : Variant [[No Variations]] of Project [PT-MIS-PCB-003_v1.PrjPcb]
+   Generated File[PT-MIS-PCB-003_v1 PCB.GTL]
+   Generated File[PT-MIS-PCB-003_v1 PCB.GBL]
+   Generated File[PT-MIS-PCB-003_v1 PCB.GTO]
+   Generated File[PT-MIS-PCB-003_v1 PCB.GTP]
+   Generated File[PT-MIS-PCB-003_v1 PCB.GTS]
+   Generated File[PT-MIS-PCB-003_v1 PCB.GBS]
+   Generated File[PT-MIS-PCB-003_v1 PCB.GBP]
+   Generated File[PT-MIS-PCB-003_v1 PCB.GBO]
+   Generated File[PT-MIS-PCB-003_v1 PCB.GM28]
+   Generated File[PT-MIS-PCB-003_v1 PCB.RUL]
+   Generated File[PT-MIS-PCB-003_v1 PCB.EXTREP]
+   Generated File[PT-MIS-PCB-003_v1 PCB.REP]
+
+
+Files Generated   : 12
+Documents Printed : 0
+
+Finished Output Generation At 6:47:37 p. m. On 2/07/2018

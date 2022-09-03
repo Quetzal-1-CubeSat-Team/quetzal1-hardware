@@ -1,0 +1,15 @@
+Project Outputs Generation Report
+---------------------------------
+Start Output Generation At 5:23:21 p. m. On 23/07/2019
+
+Output: PT-MIS-PCB-002_v1 BOM Reference
+Type  : BOM
+From  : Variant [[No Variations]] of Project [PT-PWR-EPS-002_v1.PrjPcb]
+   Generated File[PT-MIS-PCB-002_v1 BOM Reference-PT-PWR-EPS-002_v1.xlsx]
+   Generated File[PT-MIS-PCB-002_v1 BOM Reference-PT-PWR-EPS-002_v1.xlsx]
+
+
+Files Generated   : 2
+Documents Printed : 0
+
+Finished Output Generation At 5:23:48 p. m. On 23/07/2019

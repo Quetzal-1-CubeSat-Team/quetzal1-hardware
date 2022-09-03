@@ -1,0 +1,12 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [PT-MIS-PCB-005_v1.PrjPcb]
+   Generated File[PT-MIS-PCB-005_v1 PCB.TXT]
+   Generated File[PT-MIS-PCB-005_v1 PCB.LDP]
+   Generated File[PT-MIS-PCB-005_v1 PCB.DRR]
+
+
+Files Generated   : 3
+Documents Printed : 0
+
+Finished Output Generation At 7:58:46 p. m. On 5/07/2018

@@ -1,0 +1,570 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD17\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">5/07/2018</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">8:01:14 p. m.</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:01</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc" class="file"><acronym title="C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc">C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">78</td></tr>
+</table>
+</td>
+</table><a name="IDQNV5RHMXGDX2GP5JDHH4MQROKJXTKNB3OMWI2QDVSODNYXLCH5DC"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDGV5PZV20A3JUHEGXREJG13KP0FJTLHP2MNMFMNPTGVNPAYTHBD5P">Clearance Constraint (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDPO5GENBWUZWNOY1PBPYJFMAILDVOWYYO224PHIGHZDTCBVZ42CIF">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDKTMIO4UZFNCOKOFLV4SGUJDFGF1UGLURIGJGY5M520OYWBOJEJWD">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDR4135P3KL2KCLRDB4UJKFRJT4HI4HMLFTMIOTEG2HJZQ5AJTQGLL">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDERXZ0YIHZZGRCEAO0GJZNBAMKM5NOVYLLRSI2GCMRE4SLPQDIQ1D">Width Constraint (Min=0.254mm) (Max=2.54mm) (Preferred=0.254mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID3UI1RIYDNSVJBB4T1PPR2RQNDFGQABZKVUD5ENK4YXP0UY5E44WP">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDZTH1JCMTNL0SNLPQFENQE4LWCBLIAIJQ5EYT2NKVXBFYGXMNLRSB">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</a></td>
+<td class="column2">7</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID4WJKPLXQ3MFSFJ22UWAHCJ5V0DWCUAHY5P0JOGINEAPYV01AMKUL">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID2LVSR2BG3HWQGSK0LN5VSX2B3MGM2XVYIUUKZKKTGLITJJBPR4YB">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">6</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDRNY1JBSQDFKDD3QHQKHRQTNK4N53L4Z20U0CFQPUK5VFN2TEMKVP">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</a></td>
+<td class="column2">65</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID1NKTV3EOUTTAM2UMRLUI0DJA3IEBUHWC3LPQKTG3HBPSYXW2GK0F">Silk to Silk (Clearance=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDNDQINNMVALQ5NBJRUE2BMCKDSLVJHBD5C04JJ0KFSAZI1AH1XRN">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID3GNVWBUQF40FBCAHQVQZFIT3RMS1YDMPZW5MJIPI0W3H2LZI22PD">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">78</td>
+</tr>
+</table><br><a name="IDZTH1JCMTNL0SNLPQFENQE4LWCBLIAIJQ5EYT2NKVXBFYGXMNLRSB"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7069.158mil|Location2.X=7370.408mil|Location1.Y=3791.993mil|Location2.Y=4093.243mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7069.158mil|Location2.X=7370.408mil|Location1.Y=3791.993mil|Location2.Y=4093.243mil|Absolute=True">Hole Size Constraint: (7.62mm &gt; 2.54mm) Pad Free-2(21.364mm,74.031mm) on Multi-Layer Actual Hole Size = 7.62mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7861.264mil|Location2.X=8162.514mil|Location1.Y=3791.993mil|Location2.Y=4093.243mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7861.264mil|Location2.X=8162.514mil|Location1.Y=3791.993mil|Location2.Y=4093.243mil|Absolute=True">Hole Size Constraint: (7.62mm &gt; 2.54mm) Pad Free-2(41.484mm,74.031mm) on Multi-Layer Actual Hole Size = 7.62mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8653.371mil|Location2.X=8954.621mil|Location1.Y=3791.993mil|Location2.Y=4093.243mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8653.371mil|Location2.X=8954.621mil|Location1.Y=3791.993mil|Location2.Y=4093.243mil|Absolute=True">Hole Size Constraint: (7.62mm &gt; 2.54mm) Pad Free-2(61.603mm,74.031mm) on Multi-Layer Actual Hole Size = 7.62mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7069.178mil|Location2.X=7370.428mil|Location1.Y=1931.993mil|Location2.Y=2233.243mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7069.178mil|Location2.X=7370.428mil|Location1.Y=1931.993mil|Location2.Y=2233.243mil|Absolute=True">Hole Size Constraint: (7.62mm &gt; 2.54mm) Pad Free-2(21.365mm,26.787mm) on Multi-Layer Actual Hole Size = 7.62mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7861.264mil|Location2.X=8162.514mil|Location1.Y=1931.993mil|Location2.Y=2233.243mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7861.264mil|Location2.X=8162.514mil|Location1.Y=1931.993mil|Location2.Y=2233.243mil|Absolute=True">Hole Size Constraint: (7.62mm &gt; 2.54mm) Pad Free-2(41.484mm,26.787mm) on Multi-Layer Actual Hole Size = 7.62mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8653.39mil|Location2.X=8954.64mil|Location1.Y=1931.993mil|Location2.Y=2233.243mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8653.39mil|Location2.X=8954.64mil|Location1.Y=1931.993mil|Location2.Y=2233.243mil|Absolute=True">Hole Size Constraint: (7.62mm &gt; 2.54mm) Pad Free-2(61.604mm,26.787mm) on Multi-Layer Actual Hole Size = 7.62mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9183.154mil|Location2.X=9381.255mil|Location1.Y=2965.556mil|Location2.Y=3163.656mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9183.154mil|Location2.X=9381.255mil|Location1.Y=2965.556mil|Location2.Y=3163.656mil|Absolute=True">Hole Size Constraint: (5mm &gt; 2.54mm) Pad P4-2(73.75mm,51.73mm) on Multi-Layer Actual Hole Size = 5mm</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="ID2LVSR2BG3HWQGSK0LN5VSX2B3MGM2XVYIUUKZKKTGLITJJBPR4YB"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8107.304mil|Location2.X=8118.554mil|Location1.Y=3015.871mil|Location2.Y=3027.121mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8107.304mil|Location2.X=8118.554mil|Location1.Y=3015.871mil|Location2.Y=3027.121mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad D2-1(44.952mm,50.085mm) on Top Layer And Pad D2-1(44.952mm,51.185mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7831.753mil|Location2.X=7843.003mil|Location1.Y=3015.871mil|Location2.Y=3027.121mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7831.753mil|Location2.X=7843.003mil|Location1.Y=3015.871mil|Location2.Y=3027.121mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad D1-1(37.953mm,51.185mm) on Top Layer And Pad D1-1(37.953mm,50.085mm) on Top Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8661.421mil|Location2.X=8672.671mil|Location1.Y=2677.816mil|Location2.Y=2689.066mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8661.421mil|Location2.X=8672.671mil|Location1.Y=2677.816mil|Location2.Y=2689.066mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.247mm &lt; 0.254mm) Between Pad P2-2(57.5mm,42.95mm) on Bottom Layer And Pad P2-1(58.75mm,42.95mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.247mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8612.209mil|Location2.X=8623.459mil|Location1.Y=2677.816mil|Location2.Y=2689.066mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8612.209mil|Location2.X=8623.459mil|Location1.Y=2677.816mil|Location2.Y=2689.066mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.247mm &lt; 0.254mm) Between Pad P2-3(56.25mm,42.95mm) on Bottom Layer And Pad P2-2(57.5mm,42.95mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.247mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8243.036mil|Location2.X=8254.286mil|Location1.Y=2677.816mil|Location2.Y=2689.066mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8243.036mil|Location2.X=8254.286mil|Location1.Y=2677.816mil|Location2.Y=2689.066mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.247mm &lt; 0.254mm) Between Pad P1-1(48.123mm,42.95mm) on Bottom Layer And Pad P1-2(46.873mm,42.95mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.247mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7873.036mil|Location2.X=7884.286mil|Location1.Y=2677.816mil|Location2.Y=2689.066mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7873.036mil|Location2.X=7884.286mil|Location1.Y=2677.816mil|Location2.Y=2689.066mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.247mm &lt; 0.254mm) Between Pad P3-1(38.725mm,42.95mm) on Bottom Layer And Pad P3-2(37.475mm,42.95mm) on Bottom Layer [Bottom Solder] Mask Sliver [0.247mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDRNY1JBSQDFKDD3QHQKHRQTNK4N53L4Z20U0CFQPUK5VFN2TEMKVP"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8334.729mil|Location2.X=8345.979mil|Location1.Y=2996.186mil|Location2.Y=3007.436mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8334.729mil|Location2.X=8345.979mil|Location1.Y=2996.186mil|Location2.Y=3007.436mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (49.977mm,49.46mm)(49.977mm,51.81mm) on Top Overlay And Pad D2-2(48.952mm,50.635mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8108.351mil|Location2.X=8119.601mil|Location1.Y=3021.776mil|Location2.Y=3033.026mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8108.351mil|Location2.X=8119.601mil|Location1.Y=3021.776mil|Location2.Y=3033.026mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (43.927mm,49.46mm)(43.927mm,51.81mm) on Top Overlay And Pad D2-1(44.952mm,51.185mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8111.304mil|Location2.X=8122.554mil|Location1.Y=3056.225mil|Location2.Y=3067.475mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8111.304mil|Location2.X=8122.554mil|Location1.Y=3056.225mil|Location2.Y=3067.475mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (43.927mm,51.81mm)(49.977mm,51.81mm) on Top Overlay And Pad D2-1(44.952mm,51.185mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8108.351mil|Location2.X=8119.601mil|Location1.Y=2978.469mil|Location2.Y=2989.719mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8108.351mil|Location2.X=8119.601mil|Location1.Y=2978.469mil|Location2.Y=2989.719mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (43.927mm,49.46mm)(43.927mm,51.81mm) on Top Overlay And Pad D2-1(44.952mm,50.085mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8111.304mil|Location2.X=8122.554mil|Location1.Y=2975.516mil|Location2.Y=2986.766mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8111.304mil|Location2.X=8122.554mil|Location1.Y=2975.516mil|Location2.Y=2986.766mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (43.927mm,49.46mm)(49.977mm,49.46mm) on Top Overlay And Pad D2-1(44.952mm,50.085mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7675.32mil|Location2.X=7686.57mil|Location1.Y=2996.186mil|Location2.Y=3007.436mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7675.32mil|Location2.X=7686.57mil|Location1.Y=2996.186mil|Location2.Y=3007.436mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (32.928mm,49.46mm)(32.928mm,51.81mm) on Top Overlay And Pad D1-2(33.953mm,50.635mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7901.698mil|Location2.X=7912.948mil|Location1.Y=2978.469mil|Location2.Y=2989.719mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7901.698mil|Location2.X=7912.948mil|Location1.Y=2978.469mil|Location2.Y=2989.719mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (38.978mm,49.46mm)(38.978mm,51.81mm) on Top Overlay And Pad D1-1(37.953mm,50.085mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7835.753mil|Location2.X=7847.003mil|Location1.Y=2975.516mil|Location2.Y=2986.766mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7835.753mil|Location2.X=7847.003mil|Location1.Y=2975.516mil|Location2.Y=2986.766mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (32.928mm,49.46mm)(38.978mm,49.46mm) on Top Overlay And Pad D1-1(37.953mm,50.085mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7901.698mil|Location2.X=7912.948mil|Location1.Y=3021.776mil|Location2.Y=3033.026mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7901.698mil|Location2.X=7912.948mil|Location1.Y=3021.776mil|Location2.Y=3033.026mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (38.978mm,49.46mm)(38.978mm,51.81mm) on Top Overlay And Pad D1-1(37.953mm,51.185mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7835.753mil|Location2.X=7847.003mil|Location1.Y=3056.225mil|Location2.Y=3067.475mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7835.753mil|Location2.X=7847.003mil|Location1.Y=3056.225mil|Location2.Y=3067.475mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (32.928mm,51.81mm)(38.978mm,51.81mm) on Top Overlay And Pad D1-1(37.953mm,51.185mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8453.666mil|Location2.X=8464.916mil|Location1.Y=1281.717mil|Location2.Y=1292.967mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8453.666mil|Location2.X=8464.916mil|Location1.Y=1281.717mil|Location2.Y=1292.967mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.1mm &lt; 0.254mm) Between Track (50.998mm,6.587mm)(52.648mm,6.587mm) on Top Overlay And Pad PV2-2(56.898mm,3.442mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8772.564mil|Location2.X=8783.814mil|Location1.Y=1281.717mil|Location2.Y=1292.967mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8772.564mil|Location2.X=8783.814mil|Location1.Y=1281.717mil|Location2.Y=1292.967mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.1mm &lt; 0.254mm) Between Track (61.148mm,6.587mm)(67.973mm,6.587mm) on Top Overlay And Pad PV2-2(56.898mm,3.442mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7226.304mil|Location2.X=7237.554mil|Location1.Y=1281.717mil|Location2.Y=1292.967mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7226.304mil|Location2.X=7237.554mil|Location1.Y=1281.717mil|Location2.Y=1292.967mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.1mm &lt; 0.254mm) Between Track (12.148mm,6.587mm)(21.473mm,6.587mm) on Top Overlay And Pad PV2-2(25.723mm,3.442mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7545.201mil|Location2.X=7556.451mil|Location1.Y=1281.717mil|Location2.Y=1292.967mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7545.201mil|Location2.X=7556.451mil|Location1.Y=1281.717mil|Location2.Y=1292.967mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.1mm &lt; 0.254mm) Between Track (29.973mm,6.587mm)(50.998mm,6.587mm) on Top Overlay And Pad PV2-2(25.723mm,3.442mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6524.532mil|Location2.X=6535.782mil|Location1.Y=1281.717mil|Location2.Y=1292.967mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6524.532mil|Location2.X=6535.782mil|Location1.Y=1281.717mil|Location2.Y=1292.967mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.1mm &lt; 0.254mm) Between Track (1.073mm,6.587mm)(3.648mm,6.587mm) on Top Overlay And Pad PV2-3(7.898mm,3.442mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6843.43mil|Location2.X=6854.68mil|Location1.Y=1281.717mil|Location2.Y=1292.967mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6843.43mil|Location2.X=6854.68mil|Location1.Y=1281.717mil|Location2.Y=1292.967mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.1mm &lt; 0.254mm) Between Track (12.148mm,6.587mm)(21.473mm,6.587mm) on Top Overlay And Pad PV2-3(7.898mm,3.442mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6531.304mil|Location2.X=6542.554mil|Location1.Y=3141.717mil|Location2.Y=3152.967mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6531.304mil|Location2.X=6542.554mil|Location1.Y=3141.717mil|Location2.Y=3152.967mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.1mm &lt; 0.254mm) Between Track (1.245mm,53.831mm)(3.82mm,53.831mm) on Top Overlay And Pad PV1-3(8.07mm,50.686mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6850.201mil|Location2.X=6861.451mil|Location1.Y=3141.717mil|Location2.Y=3152.967mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6850.201mil|Location2.X=6861.451mil|Location1.Y=3141.717mil|Location2.Y=3152.967mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.1mm &lt; 0.254mm) Between Track (12.32mm,53.831mm)(21.645mm,53.831mm) on Top Overlay And Pad PV1-3(8.07mm,50.686mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7233.075mil|Location2.X=7244.325mil|Location1.Y=3141.717mil|Location2.Y=3152.967mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7233.075mil|Location2.X=7244.325mil|Location1.Y=3141.717mil|Location2.Y=3152.967mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.1mm &lt; 0.254mm) Between Track (12.32mm,53.831mm)(21.645mm,53.831mm) on Top Overlay And Pad PV1-2(25.895mm,50.686mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7551.973mil|Location2.X=7563.223mil|Location1.Y=3141.717mil|Location2.Y=3152.967mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7551.973mil|Location2.X=7563.223mil|Location1.Y=3141.717mil|Location2.Y=3152.967mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.1mm &lt; 0.254mm) Between Track (30.145mm,53.831mm)(51.17mm,53.831mm) on Top Overlay And Pad PV1-2(25.895mm,50.686mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8460.438mil|Location2.X=8471.688mil|Location1.Y=3141.717mil|Location2.Y=3152.967mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8460.438mil|Location2.X=8471.688mil|Location1.Y=3141.717mil|Location2.Y=3152.967mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.1mm &lt; 0.254mm) Between Track (51.17mm,53.831mm)(52.82mm,53.831mm) on Top Overlay And Pad PV1-2(57.07mm,50.686mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8779.335mil|Location2.X=8790.585mil|Location1.Y=3141.717mil|Location2.Y=3152.967mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8779.335mil|Location2.X=8790.585mil|Location1.Y=3141.717mil|Location2.Y=3152.967mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.1mm &lt; 0.254mm) Between Track (61.32mm,53.831mm)(68.145mm,53.831mm) on Top Overlay And Pad PV1-2(57.07mm,50.686mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8519.689mil|Location2.X=8530.939mil|Location1.Y=2661.147mil|Location2.Y=2672.397mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8519.689mil|Location2.X=8530.939mil|Location1.Y=2661.147mil|Location2.Y=2672.397mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (54.525mm,41.775mm)(54.525mm,42.625mm) on Bottom Overlay And Pad P2-0(53.7mm,40.05mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8442.918mil|Location2.X=8454.168mil|Location1.Y=2540.084mil|Location2.Y=2551.334mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8442.918mil|Location2.X=8454.168mil|Location1.Y=2540.084mil|Location2.Y=2551.334mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (52.425mm,38.325mm)(52.425mm,41.775mm) on Bottom Overlay And Pad P2-0(53.7mm,40.05mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8445.87mil|Location2.X=8457.12mil|Location1.Y=2661.147mil|Location2.Y=2672.397mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8445.87mil|Location2.X=8457.12mil|Location1.Y=2661.147mil|Location2.Y=2672.397mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (52.425mm,41.775mm)(54.525mm,41.775mm) on Bottom Overlay And Pad P2-0(53.7mm,40.05mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8445.87mil|Location2.X=8457.12mil|Location1.Y=2537.131mil|Location2.Y=2548.381mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8445.87mil|Location2.X=8457.12mil|Location1.Y=2537.131mil|Location2.Y=2548.381mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (52.425mm,38.325mm)(62.575mm,38.325mm) on Bottom Overlay And Pad P2-0(53.7mm,40.05mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8705.221mil|Location2.X=8716.471mil|Location1.Y=2700.517mil|Location2.Y=2711.767mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8705.221mil|Location2.X=8716.471mil|Location1.Y=2700.517mil|Location2.Y=2711.767mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.175mm &lt; 0.254mm) Between Track (59.4mm,42.625mm)(60.475mm,42.625mm) on Bottom Overlay And Pad P2-1(58.75mm,42.95mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.175mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8705.221mil|Location2.X=8716.471mil|Location1.Y=2744.808mil|Location2.Y=2756.058mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8705.221mil|Location2.X=8716.471mil|Location1.Y=2744.808mil|Location2.Y=2756.058mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.175mm &lt; 0.254mm) Between Track (59.4mm,42.625mm)(59.4mm,44.025mm) on Bottom Overlay And Pad P2-1(58.75mm,42.95mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.175mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8670.28mil|Location2.X=8681.53mil|Location1.Y=2748.745mil|Location2.Y=2759.995mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8670.28mil|Location2.X=8681.53mil|Location1.Y=2748.745mil|Location2.Y=2759.995mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Track (55.575mm,44.025mm)(59.4mm,44.025mm) on Bottom Overlay And Pad P2-1(58.75mm,42.95mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8621.067mil|Location2.X=8632.317mil|Location1.Y=2748.745mil|Location2.Y=2759.995mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8621.067mil|Location2.X=8632.317mil|Location1.Y=2748.745mil|Location2.Y=2759.995mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Track (55.575mm,44.025mm)(59.4mm,44.025mm) on Bottom Overlay And Pad P2-2(57.5mm,42.95mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8567.918mil|Location2.X=8579.168mil|Location1.Y=2744.808mil|Location2.Y=2756.058mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8567.918mil|Location2.X=8579.168mil|Location1.Y=2744.808mil|Location2.Y=2756.058mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Track (55.575mm,42.625mm)(55.575mm,44.025mm) on Bottom Overlay And Pad P2-3(56.25mm,42.95mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8567.918mil|Location2.X=8579.168mil|Location1.Y=2700.517mil|Location2.Y=2711.767mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8567.918mil|Location2.X=8579.168mil|Location1.Y=2700.517mil|Location2.Y=2711.767mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Track (54.525mm,42.625mm)(55.575mm,42.625mm) on Bottom Overlay And Pad P2-3(56.25mm,42.95mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8571.855mil|Location2.X=8583.105mil|Location1.Y=2748.745mil|Location2.Y=2759.995mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8571.855mil|Location2.X=8583.105mil|Location1.Y=2748.745mil|Location2.Y=2759.995mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Track (55.575mm,44.025mm)(59.4mm,44.025mm) on Bottom Overlay And Pad P2-3(56.25mm,42.95mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8753.941mil|Location2.X=8765.191mil|Location1.Y=2661.147mil|Location2.Y=2672.397mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8753.941mil|Location2.X=8765.191mil|Location1.Y=2661.147mil|Location2.Y=2672.397mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (60.475mm,41.775mm)(60.475mm,42.625mm) on Bottom Overlay And Pad P2-0(61.3mm,40.05mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8830.713mil|Location2.X=8841.963mil|Location1.Y=2540.084mil|Location2.Y=2551.334mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8830.713mil|Location2.X=8841.963mil|Location1.Y=2540.084mil|Location2.Y=2551.334mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (62.575mm,38.325mm)(62.575mm,41.775mm) on Bottom Overlay And Pad P2-0(61.3mm,40.05mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8753.941mil|Location2.X=8765.191mil|Location1.Y=2661.147mil|Location2.Y=2672.397mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8753.941mil|Location2.X=8765.191mil|Location1.Y=2661.147mil|Location2.Y=2672.397mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (60.475mm,41.775mm)(62.575mm,41.775mm) on Bottom Overlay And Pad P2-0(61.3mm,40.05mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8745.083mil|Location2.X=8756.333mil|Location1.Y=2537.131mil|Location2.Y=2548.381mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8745.083mil|Location2.X=8756.333mil|Location1.Y=2537.131mil|Location2.Y=2548.381mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (52.425mm,38.325mm)(62.575mm,38.325mm) on Bottom Overlay And Pad P2-0(61.3mm,40.05mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8335.556mil|Location2.X=8346.806mil|Location1.Y=2661.147mil|Location2.Y=2672.397mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8335.556mil|Location2.X=8346.806mil|Location1.Y=2661.147mil|Location2.Y=2672.397mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (49.848mm,41.775mm)(49.848mm,42.625mm) on Bottom Overlay And Pad P1-0(50.673mm,40.05mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8412.327mil|Location2.X=8423.577mil|Location1.Y=2540.084mil|Location2.Y=2551.334mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8412.327mil|Location2.X=8423.577mil|Location1.Y=2540.084mil|Location2.Y=2551.334mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (51.948mm,38.325mm)(51.948mm,41.775mm) on Bottom Overlay And Pad P1-0(50.673mm,40.05mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8326.697mil|Location2.X=8337.947mil|Location1.Y=2537.131mil|Location2.Y=2548.381mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8326.697mil|Location2.X=8337.947mil|Location1.Y=2537.131mil|Location2.Y=2548.381mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (43.048mm,38.325mm)(51.948mm,38.325mm) on Bottom Overlay And Pad P1-0(50.673mm,40.05mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8335.556mil|Location2.X=8346.806mil|Location1.Y=2661.147mil|Location2.Y=2672.397mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8335.556mil|Location2.X=8346.806mil|Location1.Y=2661.147mil|Location2.Y=2672.397mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (49.848mm,41.775mm)(51.948mm,41.775mm) on Bottom Overlay And Pad P1-0(50.673mm,40.05mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8199.729mil|Location2.X=8210.979mil|Location1.Y=2744.808mil|Location2.Y=2756.058mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8199.729mil|Location2.X=8210.979mil|Location1.Y=2744.808mil|Location2.Y=2756.058mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (46.248mm,42.625mm)(46.248mm,43.975mm) on Bottom Overlay And Pad P1-2(46.873mm,42.95mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8199.729mil|Location2.X=8210.979mil|Location1.Y=2700.517mil|Location2.Y=2711.767mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8199.729mil|Location2.X=8210.979mil|Location1.Y=2700.517mil|Location2.Y=2711.767mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (45.148mm,42.625mm)(46.248mm,42.625mm) on Bottom Overlay And Pad P1-2(46.873mm,42.95mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8202.681mil|Location2.X=8213.931mil|Location1.Y=2747.761mil|Location2.Y=2759.011mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8202.681mil|Location2.X=8213.931mil|Location1.Y=2747.761mil|Location2.Y=2759.011mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (46.248mm,43.975mm)(48.748mm,43.975mm) on Bottom Overlay And Pad P1-2(46.873mm,42.95mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8286.343mil|Location2.X=8297.593mil|Location1.Y=2744.808mil|Location2.Y=2756.058mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8286.343mil|Location2.X=8297.593mil|Location1.Y=2744.808mil|Location2.Y=2756.058mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (48.748mm,42.625mm)(48.748mm,43.975mm) on Bottom Overlay And Pad P1-1(48.123mm,42.95mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8286.343mil|Location2.X=8297.593mil|Location1.Y=2700.517mil|Location2.Y=2711.767mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8286.343mil|Location2.X=8297.593mil|Location1.Y=2700.517mil|Location2.Y=2711.767mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (48.748mm,42.625mm)(49.848mm,42.625mm) on Bottom Overlay And Pad P1-1(48.123mm,42.95mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8251.894mil|Location2.X=8263.144mil|Location1.Y=2747.761mil|Location2.Y=2759.011mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8251.894mil|Location2.X=8263.144mil|Location1.Y=2747.761mil|Location2.Y=2759.011mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (46.248mm,43.975mm)(48.748mm,43.975mm) on Bottom Overlay And Pad P1-1(48.123mm,42.95mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8150.516mil|Location2.X=8161.766mil|Location1.Y=2661.147mil|Location2.Y=2672.397mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8150.516mil|Location2.X=8161.766mil|Location1.Y=2661.147mil|Location2.Y=2672.397mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (45.148mm,41.775mm)(45.148mm,42.625mm) on Bottom Overlay And Pad P1-0(44.323mm,40.05mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8073.744mil|Location2.X=8084.994mil|Location1.Y=2540.084mil|Location2.Y=2551.334mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8073.744mil|Location2.X=8084.994mil|Location1.Y=2540.084mil|Location2.Y=2551.334mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (43.048mm,38.325mm)(43.048mm,41.775mm) on Bottom Overlay And Pad P1-0(44.323mm,40.05mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8076.697mil|Location2.X=8087.947mil|Location1.Y=2661.147mil|Location2.Y=2672.397mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8076.697mil|Location2.X=8087.947mil|Location1.Y=2661.147mil|Location2.Y=2672.397mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (43.048mm,41.775mm)(45.148mm,41.775mm) on Bottom Overlay And Pad P1-0(44.323mm,40.05mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8076.697mil|Location2.X=8087.947mil|Location1.Y=2537.131mil|Location2.Y=2548.381mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8076.697mil|Location2.X=8087.947mil|Location1.Y=2537.131mil|Location2.Y=2548.381mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (43.048mm,38.325mm)(51.948mm,38.325mm) on Bottom Overlay And Pad P1-0(44.323mm,40.05mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7965.556mil|Location2.X=7976.806mil|Location1.Y=2661.147mil|Location2.Y=2672.397mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7965.556mil|Location2.X=7976.806mil|Location1.Y=2661.147mil|Location2.Y=2672.397mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (40.45mm,41.775mm)(40.45mm,42.625mm) on Bottom Overlay And Pad P3-0(41.275mm,40.05mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8042.327mil|Location2.X=8053.577mil|Location1.Y=2540.084mil|Location2.Y=2551.334mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8042.327mil|Location2.X=8053.577mil|Location1.Y=2540.084mil|Location2.Y=2551.334mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (42.55mm,38.325mm)(42.55mm,41.775mm) on Bottom Overlay And Pad P3-0(41.275mm,40.05mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7965.556mil|Location2.X=7976.806mil|Location1.Y=2661.147mil|Location2.Y=2672.397mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7965.556mil|Location2.X=7976.806mil|Location1.Y=2661.147mil|Location2.Y=2672.397mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (40.45mm,41.775mm)(42.55mm,41.775mm) on Bottom Overlay And Pad P3-0(41.275mm,40.05mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7956.697mil|Location2.X=7967.947mil|Location1.Y=2537.131mil|Location2.Y=2548.381mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7956.697mil|Location2.X=7967.947mil|Location1.Y=2537.131mil|Location2.Y=2548.381mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (33.65mm,38.325mm)(42.55mm,38.325mm) on Bottom Overlay And Pad P3-0(41.275mm,40.05mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7829.729mil|Location2.X=7840.979mil|Location1.Y=2700.517mil|Location2.Y=2711.767mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7829.729mil|Location2.X=7840.979mil|Location1.Y=2700.517mil|Location2.Y=2711.767mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (35.75mm,42.625mm)(36.85mm,42.625mm) on Bottom Overlay And Pad P3-2(37.475mm,42.95mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7829.729mil|Location2.X=7840.979mil|Location1.Y=2744.808mil|Location2.Y=2756.058mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7829.729mil|Location2.X=7840.979mil|Location1.Y=2744.808mil|Location2.Y=2756.058mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (36.85mm,42.625mm)(36.85mm,43.975mm) on Bottom Overlay And Pad P3-2(37.475mm,42.95mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7832.681mil|Location2.X=7843.931mil|Location1.Y=2747.761mil|Location2.Y=2759.011mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7832.681mil|Location2.X=7843.931mil|Location1.Y=2747.761mil|Location2.Y=2759.011mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (36.85mm,43.975mm)(39.35mm,43.975mm) on Bottom Overlay And Pad P3-2(37.475mm,42.95mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7916.343mil|Location2.X=7927.593mil|Location1.Y=2700.517mil|Location2.Y=2711.767mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7916.343mil|Location2.X=7927.593mil|Location1.Y=2700.517mil|Location2.Y=2711.767mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (39.35mm,42.625mm)(40.45mm,42.625mm) on Bottom Overlay And Pad P3-1(38.725mm,42.95mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7916.343mil|Location2.X=7927.593mil|Location1.Y=2744.808mil|Location2.Y=2756.058mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7916.343mil|Location2.X=7927.593mil|Location1.Y=2744.808mil|Location2.Y=2756.058mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (39.35mm,42.625mm)(39.35mm,43.975mm) on Bottom Overlay And Pad P3-1(38.725mm,42.95mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7881.894mil|Location2.X=7893.144mil|Location1.Y=2747.761mil|Location2.Y=2759.011mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7881.894mil|Location2.X=7893.144mil|Location1.Y=2747.761mil|Location2.Y=2759.011mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (36.85mm,43.975mm)(39.35mm,43.975mm) on Bottom Overlay And Pad P3-1(38.725mm,42.95mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7780.516mil|Location2.X=7791.766mil|Location1.Y=2661.147mil|Location2.Y=2672.397mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7780.516mil|Location2.X=7791.766mil|Location1.Y=2661.147mil|Location2.Y=2672.397mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (35.75mm,41.775mm)(35.75mm,42.625mm) on Bottom Overlay And Pad P3-0(34.925mm,40.05mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7703.744mil|Location2.X=7714.994mil|Location1.Y=2540.084mil|Location2.Y=2551.334mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7703.744mil|Location2.X=7714.994mil|Location1.Y=2540.084mil|Location2.Y=2551.334mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (33.65mm,38.325mm)(33.65mm,41.775mm) on Bottom Overlay And Pad P3-0(34.925mm,40.05mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7706.697mil|Location2.X=7717.947mil|Location1.Y=2661.147mil|Location2.Y=2672.397mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7706.697mil|Location2.X=7717.947mil|Location1.Y=2661.147mil|Location2.Y=2672.397mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (33.65mm,41.775mm)(35.75mm,41.775mm) on Bottom Overlay And Pad P3-0(34.925mm,40.05mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACI%C3%93N)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7706.697mil|Location2.X=7717.947mil|Location1.Y=2537.131mil|Location2.Y=2548.381mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-005_v1 (EN FABRICACIÓN)\PT-MIS-PCB-005_v1 PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7706.697mil|Location2.X=7717.947mil|Location1.Y=2537.131mil|Location2.Y=2548.381mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Track (33.65mm,38.325mm)(42.55mm,38.325mm) on Bottom Overlay And Pad P3-0(34.925mm,40.05mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

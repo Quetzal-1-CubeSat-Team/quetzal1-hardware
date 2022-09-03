@@ -1,0 +1,5 @@
+DRC Rules Export File for PCB: C:\Users\josea\Desktop\2018\UVG 2018\Research\CubeSat\Hardware\Altium\Flight Boards\PT-MIS-PCB-008_v1\PT-MIS-PCB-008_v1 PCB.PcbDoc
+RuleKind=SolderMaskExpansion|RuleName=SolderMaskExpansion|Scope=Board|Minimum=4.00
+RuleKind=Width|RuleName=Width|Scope=Board|Minimum=10.00
+RuleKind=Clearance|RuleName=Clearance|Scope=Board|Minimum=10.00
+RuleKind=ShortCircuit|RuleName=ShortCircuit|Scope=Board|Allowed=0
