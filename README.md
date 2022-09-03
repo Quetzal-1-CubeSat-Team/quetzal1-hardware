@@ -17,3 +17,4 @@ Our purpose is to provide a design reference for a satellite that was fully oper
 The hardware files for the following subsystems are included in this repository:
 
 1. `ADCS/`: contains the hardware design files for the Attitude Determination and Control System (ADCS).
+2. `EPS/`: contains the hardware design files for the Electrical Power System (EPS).
