@@ -54,7 +54,7 @@ The following figure shows a high-level diagram of the system [[1]](#user-conten
 
 ![Quetzal-1-Electrical-Power-System-Architecture](./media/IMG_EPS_PAPER_001.png?raw=true "Title")
 
-The EPS was also responsible for monitoring the satellite's power grid and relaying the overall health status of the satellite to the on-board computer (OBC). Thus, a microcontroller (Microchip, Cat. No. ATMEGA328P) was implemented on the EPS circuit board to monitor and manage the power grid following the commands issued by the OBC. This specific microcontroller was chosen because it could operate at 3.3 V (the same voltage as the OBC), and more importantly because its operational temperature range was -40°C to 85°C (ideal to withstand thermal conditions on orbit).
+The EPS was also responsible for monitoring the satellite's power grid and relaying the overall health status of the satellite to the on-board computer (OBC). Thus, a microcontroller ([Microchip, Cat. No. ATMEGA328P](https://www.microchip.com/en-us/product/ATmega328P)) was implemented on the EPS circuit board to monitor and manage the power grid following the commands issued by the OBC. This specific microcontroller was chosen because it could operate at 3.3 V (the same voltage as the OBC), and more importantly because its operational temperature range was -40°C to 85°C (ideal to withstand thermal conditions on orbit).
 
 ---
 :information_source: Further information regarding a component selection rationale, in-orbit performance results and an in-depth analysis of this system's behaviour is provided in [[1]](#user-content-references).
