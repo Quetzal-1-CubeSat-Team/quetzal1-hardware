@@ -14,17 +14,22 @@ The directory is organized as follows:
 
 ### Passive Magnetic Attitude Control
 
-The ADCS was developed in-house, and it included a passive control system based on a previous mission by a different team: [Colorado Student Space Weather Experiment (CSSWE)](https://lasp.colorado.edu/home/csswe/). Quetzal-1’s ADCS used a [K&J Magnetics D84](https://www.kjmagnetics.com/proddetail.asp?prod=D84) cylindrical magnet (with 0.74  $A \cdot m^2$ magnetic moment) to align the satellite to Earth’s magnetic field and two hysteresis rods, located on mutually orthogonal axes, to stabilize its rotation.
+The ADCS was developed in-house, and it included a passive control system based on a previous mission by a different team: [Colorado Student Space Weather Experiment (CSSWE)](https://lasp.colorado.edu/home/csswe/). Quetzal-1’s ADCS used a cylindrical magnet ([K&J Magnetics, Cat. No. D84](https://www.kjmagnetics.com/proddetail.asp?prod=D84)) (with a measured 0.74  $A \cdot m^2$ magnetic moment) to align the satellite to Earth’s magnetic field and two hysteresis rods, located on mutually orthogonal axes, to stabilize its rotation [[1]](#user-content-references).
 
 ### Attitude Determination
 
-For attitude determination, Quetzal-1's ADCS included an [Adafruit Breakout Board for the BNO055 Inertial Measurement Unit](https://learn.adafruit.com/adafruit-bno055-absolute-orientation-sensor) (IMU), which includes 3-axis accelerometer, gyroscope and magnetometer, as well as a temperature sensor. The accelerometer, however, was flown powered off as linear acceleration data while in free fall was deemed of little value on orbit.
+For attitude determination, Quetzal-1's ADCS included an [Adafruit Breakout Board](https://learn.adafruit.com/adafruit-bno055-absolute-orientation-sensor) for an Inertial Measurement Unit (IMU) ([Bosch, Cat. No. BNO055](https://cdn-learn.adafruit.com/assets/assets/000/036/832/original/BST_BNO055_DS000_14.pdf)), which includes a 3-axis accelerometer, gyroscope and magnetometer, as well as a temperature sensor. The accelerometer, however, was flown powered off as linear acceleration data while in free fall was deemed of little value on orbit [[1]](#user-content-references).
 
-Additionally, 12 photodiodes [(Vishay TEMD6010FX01)](https://www.vishay.com/en/product/81308/) were implemented as Sun sensors, two on each face of the satellite (for redundancy). The selected photodiodes were digitized via a voltage divider and an Analog-to-Digital Converter (ADC) [(Texas Instruments ADC128D818)](https://www.ti.com/product/ADC128D818). All sensors were sampled and controlled by a [Microchip ATMEGA328P](https://www.microchip.com/en-us/product/ATmega328P) microcontroller on the ADCS PCB.
+Additionally, 12 photodiodes ([Vishay, Cat. No. TEMD6010FX01](https://www.vishay.com/en/product/81308/)) were implemented as Sun sensors, two on each face of the satellite (for redundancy). The selected photodiodes were digitized via a voltage divider and an Analog-to-Digital Converter (ADC) ([Texas Instruments, Cat. No. ADC128D818](https://www.ti.com/product/ADC128D818)). All sensors were sampled and controlled by a microcontroller ([Microchip, Cat. No. ATMEGA328P](https://www.microchip.com/en-us/product/ATmega328P)) on the ADCS PCB [[1]](#user-content-references).
 
-The attitude determination algorithm was based on the SVD method proposed by [(Markley, 1987)](https://www.researchgate.net/publication/243753921_Attitude_Determination_Using_Vector_Observations_and_the_Singular_Value_Decomposition) and was performed on the ground ex post facto.
+The attitude determination algorithm was based on the SVD method proposed by [[2]](#user-content-references) and was performed on the ground ex post facto.
 
-## Elecrical Design Specifics
+---
+:information_source: Further information regarding a component selection rationale, in-orbit performance results and an in-depth analysis of this system's behaviour is provided in [[1]](#user-content-references).
+
+---
+
+## Electrical Design Specifics
 
 ### PCB Stackup
 
@@ -64,3 +69,9 @@ These testing components include:
 2. A 3.3 V voltage regulator, which could be used to power all components on the board when not connected to the EPS power rails.
 3. A USB to UART Serial Interface, used to easily program the microcontroller for software development purposes. Note that the [Arduino bootloader](https://docs.arduino.cc/hacking/software/Bootloader) was burned to the microcontrollers to enable UART programming. For flight, the microcontroller was programmed via the included ICSP header and an external programmer.
 4. Miscellaneous LEDs and resistors (for I2C address selection and I2C bus pull-up, for example) that were not to be mounted for flight.
+
+## References
+
+[1] Alvarez, D. et al. (TBD): Design and On-Orbit Performance of the Attitude Determination and Passive Control System for the Quetzal-1 CubeSat, Journal of Small Satellites (JOSS), vol. TBD(TBD), p. TBD.
+
+[2] Markley, F.L. (1988): Attitude Determination Using Vector Observations and the Singular Value Decomposition, Journal of the Astronautical Sciences, vol. 36(3), pp. 245–258, http://www.malcolmdshuster.com/FC_Markley_1988_J_SVD_JAS_MDSscan.pdf, (accessed October 18, 2021).
