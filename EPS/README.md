@@ -13,7 +13,7 @@ The directory is organized as follows:
 ---
 :information_source: **NOTE**
 
-The `src/` and `output/` directories are further split into two subdirectories each: `eps/` and `solar_panels/`. The former contains the files relating to the main EPS PCB (that is, the PCB that was in charge of energy harvesting, voltage regulation, etc.), while the latter contains the files for the satellite's solar panels. These panels were connected to the main EPS PCB to form the complete Electrical Power System.
+The `src/` and `output/` directories are further split into two subdirectories each: `eps/` and `solar_panels/`. The former contains the files relating to the main EPS PCB (`PT-PWR-EPS-002`), while the latter contains the files for the satellite's solar panels. These panels were connected to `PT-PWR-EPS-002` to form the complete Electrical Power System.
 
 ---
 
@@ -32,11 +32,11 @@ The `solar_panel/` directories contain folders under the following naming scheme
 ---
 :warning: **NOTE**
 
-The PCB corresponding to the `Z-` axis (`PT-MIS-PCB-004`) is purposely not listed here (nor is it contained in this directory). This is because, this PCB also houses the satellite's Antenna Deployment Mechanism (ADM). See the `ADM/` directory for the files pertaining to this subsystem.
+The PCB corresponding to the `Z-` axis (`PT-MIS-PCB-004`) is purposely not listed here (nor is it contained in this directory). This is because, this PCB also houses the satellite's Antenna Deployment Mechanism (ADM). See the `ADM/` directory for the files pertaining to this subsystem (and further information on the solar cell mounted on this PCB).
 
 ---
 
-All solar panels contain two (2) [AZUR SPACE 3G30A](http://www.azurspace.com/images/products/0003401-01-01_DB_3G30A.pdf) solar cells and two (2) [Vishay TEMD6010FX01](https://www.vishay.com/en/product/81308/) photodiodes, with the following notable additions:
+All solar panels contained in this directory have two (2) [AZUR SPACE 3G30A](http://www.azurspace.com/images/products/0003401-01-01_DB_3G30A.pdf) solar cells and two (2) [Vishay TEMD6010FX01](https://www.vishay.com/en/product/81308/) photodiodes, with the following notable additions:
 
 1. `PT-MIS-PCB-005` contains, additionally, the Remove Before Flight (RBF) switch: [Cinch 133-3701-401](https://www.belfuse.com/resources/productinformations/cinchconnectivitysolutions/johnson/pi-ccs-john-133-3701-401.pdf).
 2. `PT-MIS-PCB-006` contains, additionally, the Flight Preparation Panel (FPP) connector, which is used to interface with the satellite when fully assembled.
@@ -52,7 +52,7 @@ Quetzal-1 carried an Electrical Power System tasked with:
 
 The following figure shows a high-level diagram of the system [[1]](#user-content-references).
 
-![Quetzal-1-Electrical-Power-System-Architecture](./media/IMG_EPS_PAPER_001.png?raw=true "Title")
+![Quetzal-1-Electrical-Power-System-Architecture](./media/IMG_EPS_PAPER_001.png?raw=true "EPS Architecture")
 
 The EPS was also responsible for monitoring the satellite's power grid and relaying the overall health status of the satellite to the on-board computer (OBC). Thus, a microcontroller ([Microchip, Cat. No. ATMEGA328P](https://www.microchip.com/en-us/product/ATmega328P)) was implemented on the EPS circuit board to monitor and manage the power grid following the commands issued by the OBC. This specific microcontroller was chosen because it could operate at 3.3 V (the same voltage as the OBC), and more importantly because its operational temperature range was -40°C to 85°C (ideal to withstand thermal conditions on orbit).
 
@@ -67,7 +67,9 @@ The EPS was also responsible for monitoring the satellite's power grid and relay
 
 ### PCB Stackup
 
-The EPS PCB is a 4-layer PCB in 1 oz copper. The layer stackup is as shown below.
+#### PT-PWR-EPS-002
+
+The main EPS PCB is a 4-layer PCB in 1 oz copper. The layer stackup is as shown below.
 
 |      Name      | Material | Thickness | Constant |
 |:--------------:|:--------:|:---------:|:--------:|
@@ -86,6 +88,22 @@ The EPS PCB is a 4-layer PCB in 1 oz copper. The layer stackup is as shown below
 | Bottom Solder  | SM-001   |   1.00mil | 4        |
 | Bottom Overlay |          |           |          |
 | Bottom Paste   |          |           |          |
+
+#### PT-MIS-PCB-003, -005 through -008
+
+The solar panels contained in this directory are 2-layer PCBs in 1 oz copper. The layer stackup is as shown below.
+
+|      Name      |    Material   | Thickness | Constant |
+|:--------------:|:-------------:|:---------:|:--------:|
+| Top Paste      |               |           |          |
+| Top Overlay    |               |           |          |
+| Top Solder     | Solder Resist |   0.40mil | 3.5      |
+| Top Layer      | Copper        |   1.40mil |          |
+| Dielectric 1   | FR-4          |  59.39mil | 4.8      |
+| Bottom Layer   | Copper        |   1.40mil |          |
+| Bottom Solder  | Solder Resist |   0.40mil | 3.5      |
+| Bottom Overlay |               |           |          |
+| Bottom Paste   |               |           |          |
 
 ## References
 

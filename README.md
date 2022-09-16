@@ -18,3 +18,15 @@ The hardware files for the following subsystems are included in this repository:
 
 1. `ADCS/`: contains the hardware design files for the Attitude Determination and Control System (ADCS).
 2. `EPS/`: contains the hardware design files for the Electrical Power System (EPS).
+3. `ADM/`: contains the hardware design files for the Antenna Deployment Mechanism (ADM).
+
+### Internal Part Naming Scheme
+
+Each Printed Circuit Board (PCB) in the design was tracked according to an internal part number (P/N), which is referenced throughout this repository and especially in the hardware source files. It is as follows:
+
+| System  | P/N                                     | Description                                                                     |
+|---------|-----------------------------------------|---------------------------------------------------------------------------------|
+| EPS     | `PT-PWR-EPS-002`                        | The main EPS PCB, in charge of energy harvesting, storage and distribution. :information_source: Sometimes also referenced as `PT-MIS-PCB-002`.     |
+| EPS     | `PT-MIS-PCB-003`, `-005` through `-008` | The solar panel PCBs for all axes except `Z-`.                                  |
+| EPS/ADM | `PT-MIS-PCB-004`                        | PCB containing both the `Z-` solar panel and the ADM.                           |
+| ADCS    | `PT-MIS-PCB-001`                        | The ADCS PCB, in charge of passive attitude control and attitude determination. |

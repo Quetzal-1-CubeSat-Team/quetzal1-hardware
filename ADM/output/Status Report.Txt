@@ -1,0 +1,16 @@
+Project Outputs Generation Report
+---------------------------------
+Start Output Generation At 12:09:27 p. m. On 21/03/2019
+
+Output: PT-MIS-PCB-004 NC Drill Files
+Type  : NC Drill
+From  : PCB Document [PT-MIS-PCB-004_v1.PcbDoc]
+   Generated File[PT-MIS-PCB-004_v1.TXT]
+   Generated File[PT-MIS-PCB-004_v1.LDP]
+   Generated File[PT-MIS-PCB-004_v1.DRR]
+
+
+Files Generated   : 3
+Documents Printed : 0
+
+Finished Output Generation At 12:09:28 p. m. On 21/03/2019
