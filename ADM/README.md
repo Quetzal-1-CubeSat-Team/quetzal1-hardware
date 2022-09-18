@@ -12,12 +12,9 @@ The directory is organized as follows:
 
 ## Conceptual Design Overview
 
----
-:information_source: **NOTE**
+The following diagram gives an overview of the components mounted on this PCB (and their interconnections). Please note that this PCB houses both the Antenna Deployment Mechanism, as well as the solar panel corresponding to the satellite's `Z-` axis.
 
-This PCB (`PT-MIS-PCB-004`) houses both the Antenna Deployment Mechanism, as well as the solar panel corresponding to the satellite's `Z-` axis.
-
----
+![adm-block-diagram](./src/PT-MIS-PCB-004_v1%20Block%20Diagram.jpg?raw=true "ADM Block Diagram")
 
 ### Antenna Deployment Mechanism
 
