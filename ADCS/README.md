@@ -22,9 +22,17 @@ For attitude determination, Quetzal-1's ADCS included an [Adafruit Breakout Boar
 
 Additionally, 12 photodiodes ([Vishay, Cat. No. TEMD6010FX01](https://www.vishay.com/en/product/81308/)) were implemented as Sun sensors, two on each face of the satellite (for redundancy). The selected photodiodes were digitized via a voltage divider and an Analog-to-Digital Converter (ADC) ([Texas Instruments, Cat. No. ADC128D818](https://www.ti.com/product/ADC128D818)). All sensors were sampled and controlled by a microcontroller ([Microchip, Cat. No. ATMEGA328P](https://www.microchip.com/en-us/product/ATmega328P)) on the ADCS PCB [[1]](#user-content-references).
 
-The attitude determination algorithm was based on the SVD method proposed by [[2]](#user-content-references) and was performed on the ground ex post facto.
+The following diagram gives on overview of the electrical interconnections between the aforementioned components.
+
+![adcs-block-diagram](./src/PT-MIS-PCB-001_v1%20Block%20Diagram.jpg?raw=true "ADCS Block Diagram")
 
 ---
+**NOTES**
+
+:warning: The photodiodes were the only ADCS components not mounted on this PCB. They were mounted on each solar panel (`PT-MIS-PCB-003` through `-008`).
+
+:information_source: The attitude determination algorithm was based on the SVD method proposed by [[2]](#user-content-references) and was performed on the ground ex post facto.
+
 :information_source: Further information regarding a component selection rationale, in-orbit performance results and an in-depth analysis of this system's behaviour is provided in [[1]](#user-content-references).
 
 ---
