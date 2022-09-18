@@ -6,7 +6,7 @@ Quetzal-1 was a 1U CubeSat developed by an engineering team from [Universidad de
 
 ![fully-assembled-satellite-front](./media/fully_assembled_satellite_front.jpg?raw=true "Quetzal-1")
 
-General information on the project is available on [the official site](https://www.uvg.edu.gt/cubesat/), including news and scientific publications that have been released throughout the project's lifetime. You can also check out [this live session on Arduino's EDUvision](https://www.youtube.com/watch?v=YOHguG6epe4&t=1319s&ab_channel=Arduino), where one of our team members speaks about the story behind Quetzal-1, from its inception to the time our satellite spent in space!
+General information on the project is available on [the official site](https://www.uvg.edu.gt/cubesat/), including news and scientific publications that have been released throughout the project's lifetime. You can also check out [this live session on Arduino's EDUvision](https://youtu.be/YOHguG6epe4?t=378), where one of our team members speaks about the story behind Quetzal-1, from its inception to the time our satellite spent in space!
 
 ## Our purpose
 
