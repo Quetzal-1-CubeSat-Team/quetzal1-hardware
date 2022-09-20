@@ -61,7 +61,7 @@ The ADCS PCB is a 4-layer PCB in 1 oz copper. The layer stackup is as shown belo
 
 ### I2C Isolation
 
-The ADCS module communicates via I2C with the On-Board Computer (OBC). However, the Electrical Power System (EPS) PCB contains load switches that turn the ADCS PCB (and other systems) on and off independently. Therefore, the I2C bus on the ADCS PCB was isolated with a [Texas Instruments TCA4311ADGKR](https://www.ti.com/product/TCA4311A/part-details/TCA4311ADGKR) I2C buffer. Without this, a power-off of the ADCS PCB would cause the unpowered slave to pull the whole satellite's I2C bus low.
+The ADCS module communicates via I2C with the On-Board Computer (OBC). However, the Electrical Power System (EPS) PCB contains load switches that turn the ADCS PCB (and other systems) on and off independently. Therefore, the I2C bus on the ADCS PCB was isolated with an I2C buffer ([Texas Instruments, Cat. No. TCA4311ADGKR](https://www.ti.com/product/TCA4311A/part-details/TCA4311ADGKR)). Without this, a power-off of the ADCS PCB would cause the unpowered slave to pull the whole satellite's I2C bus low.
 
 ### Deployment Switches
 
@@ -73,9 +73,15 @@ The ADCS PCB contained additional hardware that was only used during the develop
 
 These testing components include:
 
-1. A battery charging circuit, since the PCB could be powered on by an external battery when not integrated to the rest of the satellite.
-2. A 3.3 V voltage regulator, which could be used to power all components on the board when not connected to the EPS power rails.
-3. A USB to UART Serial Interface, used to easily program the microcontroller for software development purposes. Note that the [Arduino bootloader](https://docs.arduino.cc/hacking/software/Bootloader) was burned to the microcontrollers to enable UART programming. For flight, the microcontroller was programmed via the included ICSP header and an external programmer.
+1. A battery charging circuit ([Microchip Cat. No. MCP73811](https://www.microchip.com/en-us/product/MCP73811)), since the PCB could be powered on by an external battery when not integrated to the rest of the satellite. A P-Channel MOSFET ([Diodes, Cat. No. DMG3415U](https://www.digikey.com/en/products/detail/diodes-incorporated/DMG3415U-7/2052768)) was used to select between the `5V` and `VBAT` power sources.
+2. A 3.3 V voltage regulator ([Diodes, Cat. No. AP2112K](https://www.diodes.com/assets/Datasheets/AP2112.pdf)), which could be used to power all components on the board when not connected to the EPS power rails.
+3. A USB to UART Serial Interface ([FTDI, Cat. No. FT232RL](https://ftdichip.com/products/ft232rl/)), used to easily program the microcontroller for software development purposes. Note that the [Arduino bootloader](https://docs.arduino.cc/hacking/software/Bootloader) was burned to the microcontroller to permit UART programming. For flight, the microcontroller was programmed via the included ICSP header and an external programmer.
+
+    ---
+    :information_source: For future revisions of this board, it may be more convenient to use an external USB to UART converter.
+
+    ---
+
 4. Miscellaneous LEDs and resistors (for I2C address selection and I2C bus pull-up, for example) that were not to be mounted for flight.
 
 ## References
