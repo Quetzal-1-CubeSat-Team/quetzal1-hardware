@@ -35,4 +35,5 @@ Each Printed Circuit Board (PCB) in the design was tracked according to an inter
 |--------------------------|-------------------------------------------------------------------------------------------------------------------------|
 | quetzal1-hardware        | This repository.                                                    |
 | [quetzal1-flight-software](https://github.com/Quetzal-1-CubeSat-Team/quetzal1-flight-software) | Contains the software for Quetzal-1 and its subsystems.                                                                 |
+| [quetzal1-telemetry](https://github.com/Quetzal-1-CubeSat-Team/quetzal1-telemetry)              | Contains the telemetry and photos transmitted by Quetzal-1 while in orbit. |
 | [gr-quetzal1](https://github.com/danalvarez/gr-quetzal1)              | Contains the software used on the Ground Control Station for Quetzal-1, based on GNURadio. |
