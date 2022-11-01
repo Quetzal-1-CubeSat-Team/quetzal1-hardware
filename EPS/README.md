@@ -61,50 +61,6 @@ The EPS was also responsible for monitoring the satellite's power grid and relay
 
 ---
 
-### 
-
-## Electrical Design Specifics
-
-### PCB Stackup
-
-#### PT-PWR-EPS-002
-
-The main EPS PCB is a 4-layer PCB in 1 oz copper. The layer stackup is as shown below.
-
-|      Name      | Material | Thickness | Constant |
-|:--------------:|:--------:|:---------:|:--------:|
-| Top Paste      |          |           |          |
-| Top Overlay    |          |           |          |
-| Top Solder     | SM-001   |   1.00mil | 4        |
-| Top Layer      | Copper   |   1.38mil |          |
-| Dielectric 1   | PP-017   |   5.10mil | 4.3      |
-| Dielectric 2   | PP-017   |   5.10mil | 4.3      |
-| Ground Plane   | Copper   |   1.38mil |          |
-| Dielectric 3   | Core-039 |  33.47mil | 4.8      |
-| Power Plane    | Copper   |   1.38mil |          |
-| Dielectric 4   | PP-017   |   5.10mil | 4.3      |
-| Dielectric 5   | PP-017   |   5.10mil | 4.3      |
-| Bottom Layer   | Copper   |   1.38mil |          |
-| Bottom Solder  | SM-001   |   1.00mil | 4        |
-| Bottom Overlay |          |           |          |
-| Bottom Paste   |          |           |          |
-
-#### PT-MIS-PCB-003, -005 through -008
-
-The solar panels contained in this directory are 2-layer PCBs in 1 oz copper. The layer stackup is as shown below.
-
-|      Name      |    Material   | Thickness | Constant |
-|:--------------:|:-------------:|:---------:|:--------:|
-| Top Paste      |               |           |          |
-| Top Overlay    |               |           |          |
-| Top Solder     | Solder Resist |   0.40mil | 3.5      |
-| Top Layer      | Copper        |   1.40mil |          |
-| Dielectric 1   | FR-4          |  59.39mil | 4.8      |
-| Bottom Layer   | Copper        |   1.40mil |          |
-| Bottom Solder  | Solder Resist |   0.40mil | 3.5      |
-| Bottom Overlay |               |           |          |
-| Bottom Paste   |               |           |          |
-
 ## References
 
 [1] Aguilar-Nadalini, A. et al. (TBD): Design and On-Orbit Performance of the Electrical Power System for the Quetzal-1 CubeSat, Journal of Small Satellites (JOSS), vol. TBD(TBD), p. TBD.

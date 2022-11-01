@@ -39,26 +39,6 @@ The following diagram gives on overview of the electrical interconnections betwe
 
 ## Electrical Design Specifics
 
-### PCB Stackup
-
-The ADCS PCB is a 4-layer PCB in 1 oz copper. The layer stackup is as shown below.
-
-|      Name      |    Material   | Thickness | Constant |
-|:--------------:|:-------------:|:---------:|:--------:|
-| Top Paste      |               |           |          |
-| Top Overlay    |               |           |          |
-| Top Solder     | Solder Resist |   0.40mil | 3.5      |
-| Top Layer      | Copper        |   1.40mil |          |
-| Dielectric 1   | FR-4          |  18.85mil | 4.8      |
-| Ground Plane   | Copper        |   1.42mil |          |
-| Dielectric 3   |               |  18.85mil | 4.2      |
-| Power Plane    | Copper        |   1.42mil |          |
-| Dielectric 4   |               |  18.85mil | 4.2      |
-| Bottom Layer   | Copper        |   1.40mil |          |
-| Bottom Solder  | Solder Resist |   0.40mil | 3.5      |
-| Bottom Overlay |               |           |          |
-| Bottom Paste   |               |           |          |
-
 ### I2C Isolation
 
 The ADCS module communicates via I2C with the On-Board Computer (OBC). However, the Electrical Power System (EPS) PCB contains load switches that turn the ADCS PCB (and other systems) on and off independently. Therefore, the I2C bus on the ADCS PCB was isolated with an I2C buffer ([Texas Instruments, Cat. No. TCA4311ADGKR](https://www.ti.com/product/TCA4311A/part-details/TCA4311ADGKR)). Without this, a power-off of the ADCS PCB would cause the unpowered slave to pull the whole satellite's I2C bus low.

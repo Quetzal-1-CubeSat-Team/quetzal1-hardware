@@ -33,21 +33,3 @@ Additional pictures of the knot can be found in `media/`.
 This PCB also houses one (1) [AZUR SPACE 3G30A](http://www.azurspace.com/images/products/0003401-01-01_DB_3G30A.pdf) solar cell and two (2) [Vishay TEMD6010FX01](https://www.vishay.com/en/product/81308/) photodiodes (for energy harvesting and attitude determination, respectively).
 
 It only contains one solar cell, as opposed to two, because the satellite's camera points outwards from behind this PCB, and so half of it is reserved for a hole for the camera to see through (see `media/adm_bottom_view_1.jpg` in this directory).
-
-## Electrical Design Specifics
-
-### PCB Stackup
-
-The ADM PCB is a 2-layer PCB in 1 oz copper. The layer stackup is as shown below.
-
-|      Name      |    Material   | Thickness | Constant |
-|:--------------:|:-------------:|:---------:|:--------:|
-| Top Paste      |               |           |          |
-| Top Overlay    |               |           |          |
-| Top Solder     | Solder Resist |   0.40mil | 3.5      |
-| Top Layer      | Copper        |   1.40mil |          |
-| Dielectric 1   | FR-4          |  12.60mil | 4.8      |
-| Bottom Layer   | Copper        |   1.40mil |          |
-| Bottom Solder  | Solder Resist |   0.40mil | 3.5      |
-| Bottom Overlay |               |           |          |
-| Bottom Paste   |               |           |          |
