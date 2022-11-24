@@ -28,6 +28,12 @@ Each Printed Circuit Board (PCB) in the design was tracked according to an inter
 | EPS     | `PT-MIS-PCB-003`, `-005` through `-008` | The solar panel PCBs for all axes except `Z-`.                                  |
 | EPS/ADM | `PT-MIS-PCB-004`                        | PCB containing both the `Z-` solar panel and the ADM.                           |
 
+## How should you cite this repository?
+
+You may cite this repository as shown below. Further information is available in the [CITATION.cff](./CITATION.cff) file.
+
+> Quetzal-1 CubeSat Team. (2022). Quetzal-1 Hardware. https://github.com/Quetzal-1-CubeSat-Team/quetzal1-hardware
+
 ## Available Repositories
 
 | Repository               | Description                                                                                                             |
