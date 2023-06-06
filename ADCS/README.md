@@ -66,6 +66,6 @@ These testing components include:
 
 ## References
 
-[1] Alvarez, D. et al. (TBD): Design and On-Orbit Performance of the Attitude Determination and Passive Control System for the Quetzal-1 CubeSat, Journal of Small Satellites (JOSS), vol. TBD(TBD), p. TBD.
+[1] Alvarez, D. et al. (2023): Design and On-Orbit Performance of the Attitude Determination and Passive Control System for the Quetzal-1 CubeSat, Journal of Small Satellites (JOSS), vol. 12(2), p. 1231–1247.
 
 [2] Markley, F.L. (1988): Attitude Determination Using Vector Observations and the Singular Value Decomposition, Journal of the Astronautical Sciences, vol. 36(3), pp. 245–258, http://www.malcolmdshuster.com/FC_Markley_1988_J_SVD_JAS_MDSscan.pdf, (accessed October 18, 2021).
