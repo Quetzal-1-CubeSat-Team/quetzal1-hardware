@@ -6,7 +6,7 @@ This directory contains the original design files for the Electrical Power Syste
 
 The directory is organized as follows:
 
-1. `src/`: contains the original original design files.
+1. `src/`: contains the original design files.
 2. `output/`: contains project schematics and PCB prints in PDF format, as well as fabrication files (Gerber and NC Drill). It also contains the reference Bill of Materials (BOM).
 3. `media/`: contains miscellaneous photos of the PCB that may be of use and serve as reference to the user.
 
